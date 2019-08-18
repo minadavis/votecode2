@@ -1,0 +1,12 @@
+# which voters have a > 50% chance of turning out in 2010
+turnout.g10 <-part_two_voting_history_testing$election_date.g10 > .5	
+# which voters turned out in 2012
+turnout.g12 <- $election_date.g12 == "X"
+# build a summary of voters who turned out in 12 or 10 based on age
+to <- rbind( ddply(part_two_voting_history_testing[ele.full,],"age.2010",function(x) data.frame(age=x$age.2010[1],n=nrow(x),series="G10"))[,c(2:4)],
+                ddplypart_two_voting_history_testing[ele.full2012,],"age.2012",function(x) data.frame(age=x$age.2012[1],n=nrow(x),series="G12"))[,c(2:4)])					
+
+ 
+to <- rbind( ddply(vfs[ele.partial,],"age.2010",function(x) data.frame(age=x$age.2010[1],n=nrow(x),series="G10"))[,c(2:4)],
+		 ddply(part_two_voter_information_testing[ele.partial2010,],"age.2010",function(x) data.frame(age=x$age.2012[1],n=nrow(x),series="G12"))[,c(2:4)])	
+
