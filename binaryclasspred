@@ -1,0 +1,9 @@
+logitMod <-glm(Y ~ X1+X2, family= “binomial”, data= trainingData)
+
+predictedY <- predict (logitMod, testData, type= “response”)
+
+summary(logitmod) 
+
+pred  <-predict(logitmod, newdata =testData, type = “response”) 
+Pred
+
