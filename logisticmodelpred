@@ -1,0 +1,33 @@
+input_ones<-part_two_survey_responses_training[which(part_two_survey_responses_training$master_survey_response_name==1)]
+> input_zeros<-part_two_survey_responses_testing[which(part_two_survey_responses_training$master_survey_response_name==0)]
+> set.seed(100)
+> input_ones_training_rows<-sample(1:nrow(input_ones)),0.7*nrow(input_ones))
+input_zeros_training_rows<-sample(1:nrow(input_zeros), 0.7nrow(input_ones)) 
+training_ones <-input_ones[input_zeros_training_rows,]
+trainingData <-rbind(training_ones, training_zeros)
+
+test_ones<-input_ones[-input_ones_training_rows,]
+test_zeros< input_zeros[-input_zeros_training_rows,]
+
+##creates the training set of data and the test set of data 
+
+Factor_vars <- c (“contact_type_name”, “master_survey_question_name”)
+Continuous var <- c(“myv_van_id”, “datetime_canvassed”, “master_survey_response_name”)
+
+Iv_df <- data.frame(VARS=c(factor_vars, continous_vars) IV=numeric(15))
+
+for(factor_var in factor_vars){smb <-smbinning.factor(trainingData, y= “master_survey_response_name”, x=factor_var) if (class(smb)) != “character”){iv_df[iv_df$VARS == factor_var, “IV”] <- smb$iv
+}} 
+
+for(continuous_var in continuous_vars){smb <- smbinning(trainingData, y= “master_survey_response_name”, x=continuous_var) if (class (smb) != “character” {ivdf[iv_df$VARS == continuous_var, “IV”] <- smb$iv
+
+Iv_df <- iv_df[order(-iv_df$IV), ] iv_df
+
+logitMod <- glm( master_survey_question_name ~  myv_van_id + datetime_canvassed +master_survey_response_name, data=trainingData, family=binomial(link= “logit”)) 
+
+Predicted <- plogis(predict(logitMod, testData))  
+
+library(“InformationValue”)
+optCutOff <- optimalCutoff (testData$master_survey_question_name, predicted[1]
+
+
